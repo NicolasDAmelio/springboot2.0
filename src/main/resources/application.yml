@@ -1,0 +1,19 @@
+app:
+  name: LearningSpringBoot
+  description: ${app.name} is a Spring Boot application
+server:
+  port: 8080
+logging:
+  level:
+    com:
+      ndamelio:
+        learning:
+          springboot: debug
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    metrics:
+      enabled: true
