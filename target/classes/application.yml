@@ -5,6 +5,9 @@ server:
   port: 8080
 logging:
   level:
+    reactor:
+      core: TRACE
+      util: TRACE
     com:
       ndamelio:
         learning:

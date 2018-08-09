@@ -1,8 +1,10 @@
 package com.ndamelio.learning.springboot;
 
 import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
+@Document
 public class Image {
 
     private String id;
