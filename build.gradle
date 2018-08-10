@@ -43,7 +43,7 @@ dependencies {
     compile group: 'org.seleniumhq.selenium', name: 'selenium-htmlunit-driver', version: '2.52.0'
     compile group: 'net.sourceforge.htmlunit', name: 'htmlunit', version: '2.32'
 
-    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}"
+    compile "org.springframework.boot:spring-boot-configuration-processor"
 
     compileOnly('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')

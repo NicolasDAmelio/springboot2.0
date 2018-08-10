@@ -71,7 +71,7 @@ public class WebDriverAutoConfigurationTests {
             BDDMockito.given(factory.getObject())
                     .willReturn(Mockito.mock(FirefoxDriver.class));
 
-            return factory;g
+            return factory;
         }
     }
 
