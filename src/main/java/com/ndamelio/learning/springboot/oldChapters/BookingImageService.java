@@ -1,5 +1,7 @@
-package com.ndamelio.learning.springboot;
+package com.ndamelio.learning.springboot.oldChapters;
 
+import com.ndamelio.learning.springboot.images.Image;
+import com.ndamelio.learning.springboot.images.ImageService;
 import org.springframework.core.io.Resource;
 import org.springframework.http.codec.multipart.FilePart;
 import reactor.core.publisher.Flux;

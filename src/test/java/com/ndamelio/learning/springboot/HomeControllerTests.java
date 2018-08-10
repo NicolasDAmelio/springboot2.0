@@ -1,5 +1,8 @@
 package com.ndamelio.learning.springboot;
 
+import com.ndamelio.learning.springboot.images.Image;
+import com.ndamelio.learning.springboot.images.ImageService;
+import com.ndamelio.learning.springboot.oldChapters.EmployeeRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,5 +1,6 @@
-package com.ndamelio.learning.springboot;
+package com.ndamelio.learning.springboot.images;
 
+import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
@@ -27,9 +28,12 @@ public class ImageService {
 
     private final ImageRepository imageRepository;
 
-    public ImageService(ResourceLoader resourceLoader, ImageRepository imageRepository) {
+    private final MeterRegistry meterRegistry;
+
+    public ImageService(ResourceLoader resourceLoader, ImageRepository imageRepository, MeterRegistry meterRegistry) {
         this.resourceLoader = resourceLoader;
         this.imageRepository = imageRepository;
+        this.meterRegistry = meterRegistry;
     }
 
     /**
@@ -55,7 +59,7 @@ public class ImageService {
     }
 
     public Mono<Resource> findOneImage(String filename) {
-        return Mono.fromSupplier(() -> resourceLoader.getResource("file:" + UPLOAD_ROOT + "/" + filename)).log("findOneImages");
+        return Mono.fromSupplier(() -> resourceLoader.getResource("file:" + UPLOAD_ROOT + "/" + filename)).log("findOneImage");
     }
 
     public Mono<Void> createImage(Flux<FilePart> files) {
@@ -76,7 +80,12 @@ public class ImageService {
                             .log("createImage-newfile")
                             .flatMap(file::transferTo)
                             .log("createImage-copy");
-                    return Mono.when(saveDatabaseImage, copyFile).log("createImage-when");
+                    Mono<Void> countFile = Mono.fromRunnable(() -> {
+                        meterRegistry
+                                .summary("files.upload.bytes")
+                                .record(Paths.get(UPLOAD_ROOT, file.filename()).toFile().length());
+                    });
+                    return Mono.when(saveDatabaseImage, copyFile, countFile).log("createImage-when");
                 })
                 .log("createImage-flatMap")
                 .then()

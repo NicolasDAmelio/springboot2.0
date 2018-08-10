@@ -17,3 +17,17 @@ management:
   endpoint:
     metrics:
       enabled: true
+    beans:
+      enabled: true
+    health:
+      show-details: always
+  info:
+    git:
+      mode: full
+      enabled: true
+    build:
+      enabled: true
+    defaults:
+      enabled: true
+    env:
+      enabled: true

@@ -6,12 +6,15 @@ buildscript {
         mavenCentral()
         maven { url "https://repo.spring.io/snapshot" }
         maven { url "https://repo.spring.io/milestone" }
+        maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:1.5.1"
     }
 }
 
+apply plugin: "com.gorylenko.gradle-git-properties"
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
@@ -27,7 +30,6 @@ repositories {
     maven { url "https://repo.spring.io/milestone" }
 }
 
-
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
@@ -35,13 +37,12 @@ dependencies {
         exclude group: 'org.spring.framework.boot',
         module: 'spring-boot-starter-reactor-netty'
     }
+    compile("org.springframework.boot:spring-boot-devtools")
     compile('org.springframework.boot:spring-boot-starter-tomcat')
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.14.0'
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '3.14.0'
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-safari-driver', version: '3.14.0'
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-htmlunit-driver', version: '2.52.0'
-    compile group: 'net.sourceforge.htmlunit', name: 'htmlunit', version: '2.32'
+    compile('org.springframework.boot:spring-boot-starter-amqp')
+
 
     compile "org.springframework.boot:spring-boot-configuration-processor"
 
@@ -49,4 +50,8 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('io.projectreactor:reactor-test')
     testCompile group: "de.flapdoodle.embed", name: "de.flapdoodle.embed.mongo", version: "2.0.1"
+}
+
+springBoot  {
+    buildInfo()
 }

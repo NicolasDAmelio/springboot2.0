@@ -1,4 +1,4 @@
-package com.ndamelio.learning.springboot;
+package com.ndamelio.learning.springboot.oldChapters;
 
 import org.springframework.data.repository.query.ReactiveQueryByExampleExecutor;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;

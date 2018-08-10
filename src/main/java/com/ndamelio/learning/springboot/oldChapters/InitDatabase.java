@@ -1,5 +1,6 @@
-package com.ndamelio.learning.springboot;
+package com.ndamelio.learning.springboot.oldChapters;
 
+import com.ndamelio.learning.springboot.images.Image;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -9,12 +10,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
-@Component
+//@Component
 public class InitDatabase {
 
     private static final Logger LOG = LoggerFactory.getLogger(InitDatabase.class);
 
-    @Bean
+//    @Bean
     CommandLineRunner init(MongoOperations operations) {
         return args -> {
             operations.dropCollection(Employee.class);

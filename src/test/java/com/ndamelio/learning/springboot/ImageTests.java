@@ -1,5 +1,6 @@
 package com.ndamelio.learning.springboot;
 
+import com.ndamelio.learning.springboot.images.Image;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 

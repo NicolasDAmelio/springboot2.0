@@ -1,4 +1,4 @@
-package com.ndamelio.learning.springboot;
+package com.ndamelio.learning.springboot.images;
 
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import reactor.core.publisher.Mono;

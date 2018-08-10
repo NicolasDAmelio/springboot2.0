@@ -1,5 +1,7 @@
 package com.ndamelio.learning.springboot;
 
+import com.ndamelio.learning.springboot.images.Image;
+import com.ndamelio.learning.springboot.images.ImageRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,7 +41,7 @@ public class EmbeddedImageRepositoryTests {
         operations.insert(new Image("2", "learning-spring-boot-2nd-edition-cover.jpg"));
         operations.insert(new Image("3", "bazinga.png"));
         operations.findAll(Image.class).forEach(
-                image -> LOG.info(image.toString())
+                image -> LOG.info("test {}", image.toString())
         );
     }
 

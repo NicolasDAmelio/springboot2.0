@@ -1,11 +1,11 @@
-package com.ndamelio.learning.springboot;
+package com.ndamelio.learning.springboot.oldChapters;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Document
+//@Document
 public class Employee {
 
     @Id

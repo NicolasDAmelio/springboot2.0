@@ -1,4 +1,4 @@
-package com.ndamelio.learning.springboot;
+package com.ndamelio.learning.springboot.images;
 
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
