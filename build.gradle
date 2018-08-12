@@ -1,6 +1,7 @@
 buildscript {
     ext {
         springBootVersion = '2.0.5.BUILD-SNAPSHOT'
+        springCloudVersion = 'Finchley.SR1'
     }
     repositories {
         mavenCentral()
@@ -33,16 +34,14 @@ repositories {
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-    compile('org.springframework.boot:spring-boot-starter-webflux') {
-        exclude group: 'org.spring.framework.boot',
-        module: 'spring-boot-starter-reactor-netty'
-    }
+    compile('org.springframework.boot:spring-boot-starter-webflux')
     compile("org.springframework.boot:spring-boot-devtools")
-    compile('org.springframework.boot:spring-boot-starter-tomcat')
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.14.0'
-    compile('org.springframework.boot:spring-boot-starter-amqp')
 
+//    compile('org.springframework.boot:spring-boot-starter-amqp')
+    compile('org.springframework.cloud:spring-cloud-starter-stream-rabbit')
+    compile('org.springframework.cloud:spring-cloud-stream-reactive')
 
     compile "org.springframework.boot:spring-boot-configuration-processor"
 
@@ -50,6 +49,12 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('io.projectreactor:reactor-test')
     testCompile group: "de.flapdoodle.embed", name: "de.flapdoodle.embed.mongo", version: "2.0.1"
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
 }
 
 springBoot  {

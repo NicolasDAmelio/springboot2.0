@@ -3,7 +3,6 @@ package com.ndamelio.learning.springboot;
 import com.ndamelio.learning.springboot.comments.CommentReaderRepository;
 import com.ndamelio.learning.springboot.images.ImageService;
 import com.ndamelio.learning.springboot.oldChapters.Employee;
-import com.ndamelio.learning.springboot.oldChapters.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.domain.Example;
@@ -22,7 +21,6 @@ import reactor.core.publisher.Mono;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 
 @Controller
 public class HomeController {
